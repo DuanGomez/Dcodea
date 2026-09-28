@@ -45,7 +45,8 @@ src/
 ## Pendiente de personalizar
 
 - `core/data/projects.data.ts`: los proyectos son ejemplos; sustitúyelos por casos reales.
-- `features/contact/contact.ts`: el envío del formulario (ahora simulado).
+- `core/config/contact.config.ts`: la access key de Web3Forms. El formulario de contacto
+  envía los mensajes a dcodea.correo@gmail.com a través de https://web3forms.com (gratis, 250/mes).
 
 Contacto y redes (en `features/contact/contact.ts` y `core/layout/footer/footer.ts`):
 dcodea.correo@gmail.com · WhatsApp +57 323 292 2041 · Instagram @dcod.ea · TikTok @dcodea_

@@ -120,6 +120,28 @@
   }
 }
 
+.form__alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 107, 129, 0.35);
+  background: rgba(255, 107, 129, 0.1);
+  font-size: 14px;
+  color: var(--c-text);
+
+  app-icon {
+    color: var(--c-danger);
+  }
+
+  a {
+    color: var(--c-cyan);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
 .form__submit {
   justify-self: start;
   margin-top: 8px;

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, computed, inject, signa
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { ContactService } from '../../core/services/contact.service';
 import { RevealDirective } from '../../shared/directives/reveal';
 import { Icon, IconName } from '../../shared/ui/icon/icon';
 
@@ -23,6 +24,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 export class Contact {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly contactService = inject(ContactService);
 
   protected readonly messageMax = MESSAGE_MAX;
 
@@ -51,7 +53,7 @@ export class Contact {
     { icon: 'pin', title: 'Dónde', text: 'Trabajamos en remoto, con clientes de todo el mundo' },
   ];
 
-  protected readonly status = signal<'idle' | 'sending' | 'sent'>('idle');
+  protected readonly status = signal<'idle' | 'sending' | 'sent' | 'error'>('idle');
   private readonly submitted = signal(false);
 
   private readonly message = toSignal(this.form.controls.message.valueChanges, { initialValue: '' });
@@ -78,7 +80,7 @@ export class Contact {
     return '';
   }
 
-  protected submit(): void {
+  protected async submit(botcheck: HTMLInputElement): Promise<void> {
     this.submitted.set(true);
 
     if (this.form.invalid) {
@@ -88,14 +90,18 @@ export class Contact {
     }
 
     this.status.set('sending');
+    const value = this.form.getRawValue();
+    const service = this.serviceOptions.find((o) => o.value === value.service)?.label ?? value.service;
 
-    // TODO: conectar con un backend o servicio de email (API propia, Formspree, EmailJS…).
-    // Por ahora se simula el envío.
-    setTimeout(() => {
+    try {
+      await this.contactService.send({ ...value, service }, botcheck.checked);
       this.status.set('sent');
       this.form.reset();
       this.submitted.set(false);
-    }, 1400);
+    } catch (error) {
+      console.error('No se pudo enviar el mensaje', error);
+      this.status.set('error');
+    }
   }
 
   protected startOver(): void {

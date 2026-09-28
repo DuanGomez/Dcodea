@@ -46,8 +46,11 @@
           <button type="button" class="btn btn--glass" (click)="startOver()">Enviar otro mensaje</button>
         </div>
       } @else {
-        <form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <form class="form" [formGroup]="form" (ngSubmit)="submit(botcheck)" novalidate>
           <h2 class="subtitle form__title">Cuéntanos sobre tu proyecto</h2>
+
+          <!-- Trampa anti-spam: invisible para personas, los bots suelen marcarla -->
+          <input #botcheck type="checkbox" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="form__row">
             <div class="field" [class.field--invalid]="showError('name')">
@@ -145,6 +148,16 @@
               <p class="field__hint" id="message-count">{{ messageLength() }} / {{ messageMax }}</p>
             </div>
           </div>
+
+          @if (status() === 'error') {
+            <p class="form__alert" role="alert">
+              <app-icon name="alert" [size]="18" />
+              <span>
+                No pudimos enviar tu mensaje. Inténtalo de nuevo o escríbenos a
+                <a href="mailto:dcodea.correo@gmail.com">dcodea.correo@gmail.com</a>.
+              </span>
+            </p>
+          }
 
           <button type="submit" class="btn btn--gradient btn--lg form__submit" [disabled]="status() === 'sending'">
             @if (status() === 'sending') {
