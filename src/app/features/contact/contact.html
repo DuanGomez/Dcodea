@@ -1,0 +1,162 @@
+<section class="contact" aria-labelledby="contact-title">
+  <div class="orb contact__orb contact__orb--a" aria-hidden="true"></div>
+  <div class="orb contact__orb contact__orb--b" aria-hidden="true"></div>
+
+  <div class="container contact__grid">
+    <!-- Intro -->
+    <div class="contact__intro">
+      <span class="eyebrow enter">Contacto</span>
+      <h1 id="contact-title" class="headline enter" style="--enter-delay: 100ms">
+        Construyamos algo <span class="text-gradient">extraordinario.</span>
+      </h1>
+      <p class="lead contact__lead enter" style="--enter-delay: 200ms">
+        Cuéntanos tu idea, por pequeña o ambiciosa que sea. Te proponemos el camino para hacerla realidad.
+      </p>
+
+      <ul class="info" role="list">
+        @for (item of info; track item.title; let i = $index) {
+          <li class="info__item" appReveal [revealDelay]="200 + i * 100">
+            <span class="info__icon"><app-icon [name]="item.icon" [size]="20" /></span>
+            <div>
+              <p class="info__title">{{ item.title }}</p>
+              @if (item.href) {
+                <a
+                  class="info__text info__link"
+                  [href]="item.href"
+                  [attr.target]="item.href.startsWith('http') ? '_blank' : null"
+                  [attr.rel]="item.href.startsWith('http') ? 'noopener noreferrer' : null"
+                  >{{ item.text }}</a
+                >
+              } @else {
+                <p class="info__text">{{ item.text }}</p>
+              }
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Formulario -->
+    <div class="panel glass enter" style="--enter-delay: 250ms">
+      @if (status() === 'sent') {
+        <div class="success" role="status">
+          <div class="success__badge"><app-icon name="check" [size]="34" [strokeWidth]="2.2" /></div>
+          <h2 class="title">¡Mensaje enviado!</h2>
+          <p class="body-lg">Gracias por escribirnos. Te responderemos en menos de 24 horas.</p>
+          <button type="button" class="btn btn--glass" (click)="startOver()">Enviar otro mensaje</button>
+        </div>
+      } @else {
+        <form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <h2 class="subtitle form__title">Cuéntanos sobre tu proyecto</h2>
+
+          <div class="form__row">
+            <div class="field" [class.field--invalid]="showError('name')">
+              <input
+                id="name"
+                class="field__control"
+                type="text"
+                formControlName="name"
+                placeholder="Nombre"
+                autocomplete="name"
+                [attr.aria-invalid]="showError('name')"
+                aria-describedby="name-error"
+              />
+              <label class="field__label" for="name">Nombre</label>
+              @if (showError('name')) {
+                <p class="field__error" id="name-error"><app-icon name="alert" [size]="14" />{{ errorFor('name') }}</p>
+              }
+            </div>
+
+            <div class="field" [class.field--invalid]="showError('email')">
+              <input
+                id="email"
+                class="field__control"
+                type="email"
+                formControlName="email"
+                placeholder="Email"
+                autocomplete="email"
+                inputmode="email"
+                [attr.aria-invalid]="showError('email')"
+                aria-describedby="email-error"
+              />
+              <label class="field__label" for="email">Email</label>
+              @if (showError('email')) {
+                <p class="field__error" id="email-error"><app-icon name="alert" [size]="14" />{{ errorFor('email') }}</p>
+              }
+            </div>
+          </div>
+
+          <div class="form__row">
+            <div class="field">
+              <input
+                id="company"
+                class="field__control"
+                type="text"
+                formControlName="company"
+                placeholder="Empresa"
+                autocomplete="organization"
+              />
+              <label class="field__label" for="company">Empresa (opcional)</label>
+            </div>
+
+            <div class="field field--static">
+              <select id="budget" class="field__control" formControlName="budget">
+                <option value="">Selecciona un rango</option>
+                @for (budget of budgets; track budget) {
+                  <option [value]="budget">{{ budget }}</option>
+                }
+              </select>
+              <label class="field__label" for="budget">Presupuesto (opcional)</label>
+            </div>
+          </div>
+
+          <fieldset class="choice" [class.choice--invalid]="showError('service')" aria-describedby="service-error">
+            <legend class="choice__legend">¿Qué necesitas?</legend>
+            <div class="choice__options">
+              @for (option of serviceOptions; track option.value) {
+                <label class="choice__pill">
+                  <input type="radio" formControlName="service" [value]="option.value" />
+                  <app-icon [name]="option.icon" [size]="18" />
+                  <span>{{ option.label }}</span>
+                </label>
+              }
+            </div>
+            @if (showError('service')) {
+              <p class="field__error" id="service-error"><app-icon name="alert" [size]="14" />{{ errorFor('service') }}</p>
+            }
+          </fieldset>
+
+          <div class="field" [class.field--invalid]="showError('message')">
+            <textarea
+              id="message"
+              class="field__control"
+              formControlName="message"
+              placeholder="Mensaje"
+              rows="5"
+              [attr.maxlength]="messageMax"
+              [attr.aria-invalid]="showError('message')"
+              aria-describedby="message-error message-count"
+            ></textarea>
+            <label class="field__label" for="message">Tu mensaje</label>
+            <div class="form__meta">
+              @if (showError('message')) {
+                <p class="field__error" id="message-error"><app-icon name="alert" [size]="14" />{{ errorFor('message') }}</p>
+              }
+              <p class="field__hint" id="message-count">{{ messageLength() }} / {{ messageMax }}</p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--gradient btn--lg form__submit" [disabled]="status() === 'sending'">
+            @if (status() === 'sending') {
+              <span class="spinner" aria-hidden="true"></span> Enviando…
+            } @else {
+              Enviar mensaje <app-icon name="arrow-right" [size]="18" />
+            }
+          </button>
+
+          <p class="caption form__legal">Usaremos tus datos solo para responder a tu mensaje.</p>
+        </form>
+      }
+    </div>
+  </div>
+</section>

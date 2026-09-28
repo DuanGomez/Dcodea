@@ -1,0 +1,83 @@
+.work {
+  padding-top: clamp(48px, 6vw, 72px);
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+// Control segmentado con "píldora" deslizante (tipo iOS)
+.segmented {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--count), 1fr);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+.segmented__thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc((100% - 8px) / var(--count));
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 4px 14px -4px rgba(0, 229, 255, 0.45);
+  transform: translateX(calc(var(--index) * 100%));
+  transition: transform 0.45s var(--ease-out);
+}
+
+.segmented__option {
+  position: relative;
+  min-width: 96px;
+  padding: 9px 20px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--c-text-2);
+  cursor: pointer;
+  transition: color var(--t);
+
+  &:hover,
+  &.is-active {
+    color: var(--c-text);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 1068px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 733px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .segmented__option {
+    min-width: 0;
+    padding-inline: 14px;
+  }
+}

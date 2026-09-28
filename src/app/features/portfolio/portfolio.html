@@ -1,0 +1,52 @@
+<header class="page-hero">
+  <div class="orb page-hero__orb" aria-hidden="true"></div>
+  <div class="container">
+    <span class="eyebrow enter">Portafolio</span>
+    <h1 class="display page-hero__title enter" style="--enter-delay: 100ms">
+      Ideas que ya <span class="text-gradient">son reales.</span>
+    </h1>
+    <p class="lead page-hero__lead enter" style="--enter-delay: 200ms">
+      Una selección de webs, software y merch que hemos diseñado y construido.
+    </p>
+  </div>
+</header>
+
+<section class="section section--deep work" aria-label="Proyectos">
+  <div class="container">
+    <div class="toolbar">
+      <div
+        class="segmented"
+        role="group"
+        aria-label="Filtrar proyectos por categoría"
+        [style.--count]="filters.length"
+        [style.--index]="activeIndex()"
+      >
+        <span class="segmented__thumb" aria-hidden="true"></span>
+        @for (filter of filters; track filter.value) {
+          <button
+            type="button"
+            class="segmented__option"
+            [class.is-active]="active() === filter.value"
+            [attr.aria-pressed]="active() === filter.value"
+            (click)="active.set(filter.value)"
+          >
+            {{ filter.label }}
+          </button>
+        }
+      </div>
+      <p class="caption" aria-live="polite">
+        {{ projects().length }} {{ projects().length === 1 ? 'proyecto' : 'proyectos' }}
+      </p>
+    </div>
+
+    <ul class="grid" role="list">
+      @for (project of projects(); track project.id; let i = $index) {
+        <li appReveal [revealDelay]="(i % 3) * 100">
+          <app-project-card [project]="project" />
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<app-cta-banner />

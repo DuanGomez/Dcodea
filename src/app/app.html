@@ -1,0 +1,9 @@
+<button class="skip-link" type="button" (click)="skipToContent(main)">Saltar al contenido</button>
+
+<app-header />
+
+<main #main id="main" tabindex="-1">
+  <router-outlet />
+</main>
+
+<app-footer />

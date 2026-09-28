@@ -1,0 +1,37 @@
+<nav class="nav" aria-label="Navegación principal">
+  <div class="nav__inner container">
+    <a routerLink="/" class="nav__brand" aria-label="Dcodea, ir al inicio">
+      <img src="images/isotipo.png" alt="" width="26" height="26" />
+      <span>Dcodea</span>
+    </a>
+
+    <ul class="nav__links" id="nav-menu" role="list">
+      @for (link of links; track link.path; let i = $index) {
+        <li [style.--i]="i">
+          <a
+            [routerLink]="link.path"
+            routerLinkActive="is-active"
+            [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+            ariaCurrentWhenActive="page"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <a routerLink="/contacto" class="btn btn--primary btn--sm nav__cta">Hablemos</a>
+
+    <button
+      class="nav__toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="nav-menu"
+      [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,74 @@
+// Design tokens — única fuente de verdad para color, tipografía, radios y movimiento.
+:root {
+  color-scheme: dark;
+
+  // Superficies
+  --c-bg: #0f172a;
+  --c-bg-deep: #0a0f1e;
+  --c-bg-elevated: #1b1f3b;
+  --c-light-bg: #f5f5f7;
+  --c-light-surface: #ffffff;
+
+  // Marca
+  --c-cyan: #00e5ff;
+  --c-sky: #23b5f3;
+  --c-violet: #6c5ce7;
+  --c-indigo: #5c32f2;
+
+  // Texto (modo oscuro)
+  --c-text: #f5f5f7;
+  --c-text-2: rgba(245, 245, 247, 0.68);
+  --c-text-3: rgba(245, 245, 247, 0.45);
+
+  // Texto (secciones claras)
+  --c-ink: #1d1d1f;
+  --c-ink-2: #6e6e73;
+
+  // Estado
+  --c-danger: #ff6b81;
+  --c-success: #34d399;
+
+  // Color contextual: las secciones claras lo redefinen
+  --fg: var(--c-text);
+  --fg-2: var(--c-text-2);
+  --fg-3: var(--c-text-3);
+  --accent: var(--c-cyan);
+  --hairline: rgba(255, 255, 255, 0.1);
+
+  // Glassmorphism
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-strong: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-blur: blur(10px) saturate(160%);
+
+  // Gradientes
+  --grad-brand: linear-gradient(135deg, #00e5ff 0%, #23b5f3 38%, #6c5ce7 78%, #5c32f2 100%);
+  --grad-text: linear-gradient(100deg, #00e5ff 0%, #23b5f3 30%, #6c5ce7 70%, #8b7bff 100%);
+
+  // Tipografía
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  // Forma
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 980px;
+
+  // Movimiento (curva característica de Apple)
+  --ease: cubic-bezier(0.28, 0.11, 0.32, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t: 0.3s ease;
+
+  // Layout
+  --nav-h: 52px;
+  --container: 1120px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section-y: clamp(96px, 14vw, 168px);
+
+  // Sombras
+  --shadow-soft: 0 30px 60px -24px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 0 1px rgba(0, 229, 255, 0.28), 0 12px 40px -8px rgba(0, 229, 255, 0.45);
+}

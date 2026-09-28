@@ -1,0 +1,285 @@
+.contact {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--nav-h) + clamp(64px, 9vw, 112px)) 0 var(--section-y);
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 0%, #1b1f3b 0%, transparent 70%),
+    var(--c-bg);
+}
+
+.contact__orb--a {
+  top: 6%;
+  left: -8%;
+  width: 480px;
+  height: 480px;
+  background: var(--c-cyan);
+  opacity: 0.16;
+}
+
+.contact__orb--b {
+  bottom: 0;
+  right: -10%;
+  width: 560px;
+  height: 560px;
+  background: var(--c-indigo);
+  opacity: 0.3;
+}
+
+.contact__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  align-items: start;
+  gap: clamp(40px, 6vw, 88px);
+}
+
+.contact__intro {
+  padding-top: 24px;
+
+  .headline .text-gradient {
+    display: inline-block;
+    padding-bottom: 0.08em;
+  }
+}
+
+.contact__lead {
+  margin-top: 22px;
+}
+
+.info {
+  display: grid;
+  gap: 22px;
+  margin-top: 48px;
+}
+
+.info__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.info__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--c-cyan);
+}
+
+.info__title {
+  font-size: 13px;
+  color: var(--c-text-3);
+}
+
+.info__text {
+  margin-top: 2px;
+  font-size: 17px;
+  color: var(--c-text);
+}
+
+.info__link {
+  transition: color var(--t);
+
+  &:hover {
+    color: var(--c-cyan);
+  }
+}
+
+// ---------- Panel ----------
+.panel {
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: 32px;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.form__title {
+  margin-bottom: 8px;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+
+  .field__hint {
+    margin-left: auto;
+  }
+}
+
+.form__submit {
+  justify-self: start;
+  margin-top: 8px;
+}
+
+.form__legal {
+  margin-top: -4px;
+}
+
+// Selector de tipo de proyecto (píldoras)
+.choice {
+  margin: 4px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.choice__legend {
+  margin-bottom: 12px;
+  padding: 0;
+  font-size: 15px;
+  color: var(--c-text-2);
+}
+
+.choice__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.choice__pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 15px;
+  color: var(--c-text-2);
+  cursor: pointer;
+  transition:
+    border-color var(--t),
+    background-color var(--t),
+    color var(--t),
+    box-shadow var(--t),
+    transform 0.3s var(--ease);
+
+  input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--c-text);
+  }
+
+  &:has(input:checked) {
+    border-color: var(--c-cyan);
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--c-text);
+    box-shadow: 0 0 24px -8px rgba(0, 229, 255, 0.7);
+
+    app-icon {
+      color: var(--c-cyan);
+    }
+  }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid var(--c-cyan);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.choice--invalid .choice__pill:not(:has(input:checked)) {
+  border-color: rgba(255, 107, 129, 0.5);
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ---------- Éxito ----------
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(24px, 6vw, 64px) 0;
+  text-align: center;
+  animation: fade-up 0.8s var(--ease-out) both;
+
+  .body-lg {
+    max-width: 32ch;
+  }
+
+  .btn {
+    margin-top: 16px;
+  }
+}
+
+.success__badge {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--grad-brand);
+  box-shadow: 0 20px 50px -12px rgba(0, 229, 255, 0.6);
+  animation: pop 0.7s var(--ease-out) both 0.1s;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1068px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact__intro {
+    padding-top: 0;
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 733px) {
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .form__submit {
+    justify-self: stretch;
+  }
+}

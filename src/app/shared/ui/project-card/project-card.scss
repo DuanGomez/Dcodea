@@ -1,0 +1,181 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.5s var(--ease-out),
+    box-shadow 0.5s var(--ease),
+    border-color 0.4s ease;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.1) inset,
+      0 40px 80px -30px rgba(0, 0, 0, 0.7),
+      0 0 60px -20px rgba(0, 229, 255, 0.35);
+  }
+}
+
+.card__cover {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  margin: 8px 8px 0;
+  border-radius: calc(var(--radius-lg) - 8px);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--c1) 70%, transparent), transparent 60%),
+    radial-gradient(120% 90% at 100% 100%, color-mix(in srgb, var(--c2) 80%, transparent), transparent 60%),
+    #111a33;
+
+  // textura de retícula
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(circle at 50% 40%, #000, transparent 75%);
+  }
+}
+
+.card__window {
+  position: absolute;
+  z-index: 1;
+  left: 12%;
+  right: 12%;
+  top: 22%;
+  padding: 14px 16px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(15, 23, 42, 0.45);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.6);
+  transition: transform 0.6s var(--ease-out);
+
+  code {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #e6fbff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.card__dots {
+  display: flex;
+  gap: 5px;
+
+  i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+  }
+}
+
+.card__lines {
+  display: grid;
+  gap: 7px;
+  margin-top: 12px;
+
+  i {
+    height: 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.16);
+
+    &:nth-child(1) {
+      width: 78%;
+    }
+
+    &:nth-child(2) {
+      width: 56%;
+    }
+
+    &:nth-child(3) {
+      width: 66%;
+      background: linear-gradient(90deg, var(--c-cyan), transparent);
+      opacity: 0.7;
+    }
+  }
+}
+
+.card__badge {
+  position: absolute;
+  z-index: 2;
+  right: 7%;
+  bottom: 9%;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.card:hover {
+  .card__window {
+    transform: translate3d(0, -6px, 0) scale(1.02);
+  }
+
+  .card__badge {
+    transform: translate3d(0, -10px, 0) rotate(-6deg);
+  }
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px 24px 26px;
+}
+
+.card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__title {
+  margin-top: 14px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+}
+
+.card__summary {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-2);
+}
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: auto;
+  padding-top: 18px;
+
+  li {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--c-cyan);
+    opacity: 0.85;
+
+    &::before {
+      content: '#';
+      opacity: 0.5;
+    }
+  }
+}

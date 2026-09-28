@@ -1,0 +1,10 @@
+// Estilos globales de Dcodea.
+// Cada parcial tiene una responsabilidad: tokens → base → componentes utilitarios.
+@use 'styles/tokens';
+@use 'styles/base';
+@use 'styles/typography';
+@use 'styles/buttons';
+@use 'styles/glass';
+@use 'styles/motion';
+@use 'styles/forms';
+@use 'styles/page';

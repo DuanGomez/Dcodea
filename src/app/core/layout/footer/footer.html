@@ -1,0 +1,43 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a routerLink="/" class="footer__logo" aria-label="Dcodea, ir al inicio">
+          <img src="images/isotipo.png" alt="" width="36" height="36" loading="lazy" />
+          <span>Dcodea</span>
+        </a>
+        <p class="footer__claim">Código y diseño con obsesión por el detalle.</p>
+
+        <ul class="footer__socials" role="list">
+          @for (social of socials; track social.label) {
+            <li>
+              <a [href]="social.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="social.label">
+                <app-icon [name]="social.icon" [size]="16" />
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <nav class="footer__nav" aria-label="Enlaces del pie de página">
+        @for (column of columns; track column.title) {
+          <div class="footer__col">
+            <h2>{{ column.title }}</h2>
+            <ul role="list">
+              @for (link of column.links; track link.label) {
+                <li>
+                  <a [routerLink]="link.path" [fragment]="link.fragment">{{ link.label }}</a>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p>Copyright © {{ year }} Dcodea. Todos los derechos reservados.</p>
+      <p class="footer__made">Hecho con <span class="mono">&lt;/&gt;</span> y café.</p>
+    </div>
+  </div>
+</footer>

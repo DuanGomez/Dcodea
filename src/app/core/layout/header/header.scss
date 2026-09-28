@@ -1,0 +1,204 @@
+:host {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+}
+
+.nav {
+  position: relative;
+  height: var(--nav-h);
+
+  // El cristal vive en un pseudo-elemento: un backdrop-filter en .nav convertiría
+  // a este en el "containing block" del menú móvil (position: fixed) y lo recortaría.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color 0.4s var(--ease),
+      border-color 0.4s var(--ease);
+  }
+}
+
+// Glassmorphism al hacer scroll (o con el menú abierto)
+:host(.is-scrolled) .nav::before,
+:host(.is-open) .nav::before {
+  background: rgba(15, 23, 42, 0.72);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 100%;
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--c-text);
+  transition: opacity var(--t);
+
+  img {
+    filter: drop-shadow(0 2px 8px rgba(0, 229, 255, 0.45));
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  &:hover img {
+    transform: rotate(-8deg) scale(1.08);
+  }
+}
+
+.nav__links {
+  display: flex;
+  gap: 4px;
+  margin: 0 auto;
+
+  a {
+    position: relative;
+    display: block;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--c-text-2);
+    transition: color var(--t);
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 1px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--c-cyan);
+      box-shadow: 0 0 10px var(--c-cyan);
+      transform: translateX(-50%) scale(0);
+      transition: transform 0.3s var(--ease);
+    }
+
+    &:hover {
+      color: var(--c-text);
+    }
+
+    &.is-active {
+      color: var(--c-text);
+
+      &::after {
+        transform: translateX(-50%) scale(1);
+      }
+    }
+  }
+}
+
+.nav__toggle {
+  display: none;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-right: -12px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  span {
+    position: absolute;
+    left: 14px;
+    width: 17px;
+    height: 1.5px;
+    border-radius: 2px;
+    background: var(--c-text);
+    transition: transform 0.35s var(--ease);
+
+    &:first-child {
+      top: 18px;
+    }
+
+    &:last-child {
+      top: 25px;
+    }
+  }
+}
+
+:host(.is-open) .nav__toggle span {
+  &:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  &:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+}
+
+// Menú móvil a pantalla completa (como en apple.com)
+@media (max-width: 833px) {
+  .nav__inner {
+    justify-content: space-between;
+  }
+
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+
+  .nav__links {
+    position: fixed;
+    inset: var(--nav-h) 0 0;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 24px var(--gutter);
+    background: rgba(15, 23, 42, 0.96);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 0.35s var(--ease),
+      visibility 0s linear 0.35s;
+
+    li {
+      opacity: 0;
+      transform: translateY(-8px);
+      transition:
+        opacity 0.4s var(--ease),
+        transform 0.4s var(--ease);
+      transition-delay: calc(var(--i) * 40ms + 60ms);
+    }
+
+    a {
+      padding: 12px 0;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  :host(.is-open) .nav__links {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.35s var(--ease);
+
+    li {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

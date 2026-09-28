@@ -1,0 +1,39 @@
+// Cabecera compartida de las páginas interiores (Servicios, Portafolio, Contacto).
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--nav-h) + clamp(72px, 10vw, 128px)) 0 clamp(64px, 8vw, 104px);
+  text-align: center;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, #1b1f3b 0%, transparent 70%),
+    var(--c-bg);
+
+  .container {
+    position: relative;
+  }
+}
+
+.page-hero__orb {
+  top: -30%;
+  left: 50%;
+  width: 640px;
+  height: 480px;
+  margin-left: -320px;
+  background: linear-gradient(90deg, var(--c-cyan), var(--c-violet));
+  opacity: 0.22;
+}
+
+.page-hero__title {
+  max-width: 14ch;
+  margin-inline: auto;
+
+  .text-gradient {
+    display: inline-block;
+    padding-bottom: 0.08em;
+  }
+}
+
+.page-hero__lead {
+  max-width: 36ch;
+  margin: 24px auto 0;
+}

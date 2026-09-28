@@ -1,0 +1,195 @@
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: calc(var(--nav-h) + 48px) 0 96px;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, #1b1f3b 0%, transparent 70%),
+    var(--c-bg);
+}
+
+// ---------- Fondo ----------
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.orb--cyan {
+  top: 8%;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+  margin-left: -420px;
+  background: var(--c-cyan);
+  opacity: 0.22;
+  animation: drift 16s ease-in-out infinite;
+}
+
+.orb--violet {
+  top: 18%;
+  left: 50%;
+  width: 560px;
+  height: 560px;
+  margin-left: -80px;
+  background: var(--c-violet);
+  opacity: 0.3;
+  animation: drift 20s ease-in-out infinite reverse;
+}
+
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 38%, #000 10%, transparent 75%);
+}
+
+// ---------- Contenido ----------
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Isotipo flotante sobre un disco de cristal
+.hero__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(220px, 30vw, 320px);
+  aspect-ratio: 1;
+  margin-bottom: clamp(28px, 4vw, 44px);
+  transition: transform 0.6s var(--ease-out);
+  transform-style: preserve-3d;
+}
+
+.hero__halo {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, var(--c-cyan), var(--c-violet), var(--c-indigo), var(--c-sky), var(--c-cyan));
+  filter: blur(48px);
+  opacity: 0.45;
+}
+
+.hero__plate {
+  position: absolute;
+  inset: 0;
+  border-radius: 34%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  backdrop-filter: blur(10px) saturate(160%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 -20px 40px -20px rgba(0, 229, 255, 0.25) inset,
+    0 40px 80px -30px rgba(0, 0, 0, 0.7);
+  transform: translateZ(0);
+
+  // Reflejo especular
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.28) 0%, transparent 38%);
+    pointer-events: none;
+  }
+}
+
+.hero__logo {
+  position: relative;
+  width: 78%;
+  height: auto;
+  filter: drop-shadow(0 24px 40px rgba(35, 181, 243, 0.35)) drop-shadow(0 8px 16px rgba(92, 50, 242, 0.35));
+  animation: float 7s ease-in-out infinite;
+}
+
+.hero__eyebrow {
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.06);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.hero__title {
+  max-width: 13ch;
+
+  .text-gradient {
+    display: inline-block;
+    padding-bottom: 0.08em;
+  }
+}
+
+.hero__lead {
+  max-width: 34ch;
+  margin-top: 24px;
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 32px;
+  margin-top: 40px;
+}
+
+// Indicador de scroll
+.hero__scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  width: 24px;
+  height: 38px;
+  margin-left: -12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+
+  span {
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    width: 3px;
+    height: 7px;
+    margin-left: -1.5px;
+    border-radius: 2px;
+    background: var(--c-cyan);
+    animation: scroll-hint 2s var(--ease) infinite;
+  }
+}
+
+@keyframes scroll-hint {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (max-width: 733px) {
+  .hero__scroll {
+    display: none;
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+  }
+}

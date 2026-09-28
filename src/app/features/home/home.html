@@ -1,0 +1,101 @@
+<app-hero />
+
+<!-- Manifiesto -->
+<section class="section section--light section--white statement" aria-labelledby="statement-title">
+  <div class="container">
+    <div class="section__head" appReveal>
+      <span class="eyebrow">Por qué Dcodea</span>
+      <h2 id="statement-title" class="headline">
+        Cada línea de código,<br />
+        pensada como diseño.
+      </h2>
+      <p class="lead statement__lead">
+        Somos un estudio pequeño con estándares grandes. Unimos ingeniería y diseño para crear productos
+        digitales que funcionan de forma impecable y se ven todavía mejor.
+      </p>
+    </div>
+
+    <ul class="promises" role="list">
+      @for (item of promises; track item.value; let i = $index) {
+        <li class="promise" appReveal [revealDelay]="i * 120">
+          <app-icon class="promise__icon" [name]="item.icon" [size]="28" />
+          <strong class="promise__value">{{ item.value }}</strong>
+          <p class="promise__label">{{ item.label }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section class="section services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section__head" appReveal>
+      <span class="eyebrow">Servicios</span>
+      <h2 id="services-title" class="headline">Todo lo que necesitas para lanzar.</h2>
+    </div>
+
+    <div class="tiles">
+      @for (service of services; track service.id; let i = $index) {
+        <div appReveal [revealDelay]="i * 120">
+          <article class="tile glass spotlight" appTilt [tiltMax]="3">
+            <div class="icon-tile tile__icon">
+              <app-icon [name]="service.icon" [size]="26" />
+            </div>
+            <span class="eyebrow tile__eyebrow">{{ service.eyebrow }}</span>
+            <h3 class="subtitle">{{ service.tagline }}</h3>
+            <p class="tile__text">{{ service.description }}</p>
+            <a class="link-arrow tile__link" routerLink="/servicios" [fragment]="service.id">
+              Más información <app-icon name="chevron-right" [size]="18" />
+            </a>
+          </article>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Identidad -->
+<section class="section section--light brand" aria-labelledby="brand-title">
+  <div class="container">
+    <div class="section__head" appReveal>
+      <span class="eyebrow">Código y diseño</span>
+      <h2 id="brand-title" class="headline">Precisión que se nota. Detalles que se sienten.</h2>
+    </div>
+
+    <figure class="brand__frame reveal--scale" appReveal>
+      <img
+        src="images/banner.webp"
+        alt="Isotipo de Dcodea en cristal sobre un escritorio minimalista junto al texto Dcodea, código y diseño"
+        width="1800"
+        height="1005"
+        loading="lazy"
+      />
+    </figure>
+  </div>
+</section>
+
+<!-- Proyectos destacados -->
+<section class="section section--deep work" aria-labelledby="work-title">
+  <div class="container">
+    <div class="work__head" appReveal>
+      <div>
+        <span class="eyebrow">Portafolio</span>
+        <h2 id="work-title" class="headline">Trabajo reciente.</h2>
+      </div>
+      <a routerLink="/portafolio" class="link-arrow">
+        Ver todos los proyectos <app-icon name="chevron-right" [size]="18" />
+      </a>
+    </div>
+
+    <ul class="work__grid" role="list">
+      @for (project of featured; track project.id; let i = $index) {
+        <li appReveal [revealDelay]="i * 120">
+          <app-project-card [project]="project" />
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<app-cta-banner />

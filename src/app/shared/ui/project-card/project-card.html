@@ -1,0 +1,27 @@
+@let p = project();
+<article class="card glass spotlight" appTilt [tiltMax]="4">
+  <div class="card__cover" [style.--c1]="p.colors[0]" [style.--c2]="p.colors[1]" aria-hidden="true">
+    <div class="card__window">
+      <div class="card__dots"><i></i><i></i><i></i></div>
+      <code class="mono">{{ p.glyph }}</code>
+      <div class="card__lines"><i></i><i></i><i></i></div>
+    </div>
+    <div class="card__badge icon-tile">
+      <app-icon [name]="p.icon" [size]="24" />
+    </div>
+  </div>
+
+  <div class="card__body">
+    <div class="card__meta">
+      <span class="chip">{{ labels[p.category] }}</span>
+      <span class="caption">{{ p.year }}</span>
+    </div>
+    <h3 class="card__title">{{ p.name }}</h3>
+    <p class="card__summary">{{ p.summary }}</p>
+    <ul class="card__tags" role="list" aria-label="Tecnologías">
+      @for (tag of p.tags; track tag) {
+        <li>{{ tag }}</li>
+      }
+    </ul>
+  </div>
+</article>

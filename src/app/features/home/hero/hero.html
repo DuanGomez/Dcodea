@@ -1,0 +1,44 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="orb orb--cyan"></div>
+    <div class="orb orb--violet"></div>
+    <div class="hero__grid"></div>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="enter" style="--enter-delay: 0ms">
+      <div class="hero__mark" appTilt [tiltMax]="14">
+        <div class="hero__halo" aria-hidden="true"></div>
+        <div class="hero__plate" aria-hidden="true"></div>
+        <img
+          class="hero__logo"
+          src="images/isotipo.png"
+          alt="Isotipo de Dcodea"
+          width="720"
+          height="720"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+
+    <p class="eyebrow hero__eyebrow enter" style="--enter-delay: 120ms">Dcodea · Código y diseño</p>
+
+    <h1 id="hero-title" class="display hero__title enter" style="--enter-delay: 220ms">
+      Software que se siente
+      <span class="text-gradient">bien hecho.</span>
+    </h1>
+
+    <p class="lead hero__lead enter" style="--enter-delay: 340ms">
+      Diseñamos y desarrollamos webs, software a medida y merch para quienes construyen el futuro.
+    </p>
+
+    <div class="hero__ctas enter" style="--enter-delay: 460ms">
+      <a routerLink="/contacto" class="btn btn--primary btn--lg">Empezar un proyecto</a>
+      <a routerLink="/portafolio" class="link-arrow">
+        Ver proyectos <app-icon name="chevron-right" [size]="18" />
+      </a>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true"><span></span></div>
+</section>
