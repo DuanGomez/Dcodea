@@ -15,6 +15,12 @@ export interface Project {
   /** Colores del degradado de portada. */
   colors: [string, string];
   featured?: boolean;
+  /** Captura del proyecto (public/images/projects). */
+  image?: string;
+  /** Demo publicada (GitHub Pages). */
+  demoUrl?: string;
+  /** Repositorio en GitHub. */
+  repoUrl?: string;
 }
 
 export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
@@ -23,31 +29,82 @@ export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
   merch: 'Merch',
 };
 
-// Proyectos de ejemplo: reemplázalos por casos reales.
+const GITHUB = 'https://github.com/DuanGomez';
+const PAGES = 'https://duangomez.github.io';
+
 export const PROJECTS: readonly Project[] = [
   {
-    id: 'nimbus',
-    name: 'Nimbus Analytics',
+    id: 'smartkitchen',
+    name: 'SmartKitchen',
     category: 'software',
     year: 2026,
-    summary: 'Dashboard en tiempo real para equipos de producto, con métricas y alertas inteligentes.',
-    tags: ['Angular', 'Node.js', 'WebSockets'],
-    icon: 'database',
-    glyph: 'stream.pipe(insight)',
-    colors: ['#00E5FF', '#5C32F2'],
+    summary: 'POS para restaurantes: pedidos por mesa, pantallas por estación (cocina, barra, México) y caja con facturación.',
+    tags: ['Angular', 'Spring Boot', 'PostgreSQL', 'JWT'],
+    icon: 'zap',
+    glyph: 'pedido.enviar(cocina)',
+    colors: ['#FF6B35', '#5C32F2'],
     featured: true,
+    image: 'images/projects/smartkitchen.webp',
+    demoUrl: `${PAGES}/SmartKitchen/`,
+    repoUrl: `${GITHUB}/SmartKitchen`,
   },
   {
-    id: 'aurora',
-    name: 'Aurora Store',
+    id: 'trainix',
+    name: 'Trainix',
+    category: 'software',
+    year: 2026,
+    summary: 'Gestión de gimnasios: clientes, membresías, pagos, caja, check-in, rutinas y reportes por rol.',
+    tags: ['Angular', 'NestJS', 'TypeORM', 'Material'],
+    icon: 'database',
+    glyph: 'checkin("TX-0001")',
+    colors: ['#3D5AFE', '#00E5FF'],
+    featured: true,
+    image: 'images/projects/trainix.webp',
+    demoUrl: `${PAGES}/Trainix/`,
+    repoUrl: `${GITHUB}/Trainix`,
+  },
+  {
+    id: 'saas-ventas',
+    name: 'SaaS Ventas',
+    category: 'software',
+    year: 2026,
+    summary: 'SaaS multi-tienda: cada negocio tiene su vitrina y su panel, y los clientes compran por WhatsApp.',
+    tags: ['Angular', 'Node.js', 'Express', 'SQLite'],
+    icon: 'layers',
+    glyph: 'wa.me/?text=pedido',
+    colors: ['#22A556', '#00E5FF'],
+    featured: true,
+    image: 'images/projects/saas-ventas.webp',
+    demoUrl: `${PAGES}/SaaS-Ventas/`,
+    repoUrl: `${GITHUB}/SaaS-Ventas`,
+  },
+  {
+    id: 'doose',
+    name: 'Doose Tattoo',
     category: 'web',
     year: 2026,
-    summary: 'E-commerce minimalista con checkout en un paso y rendimiento de primer nivel.',
-    tags: ['Angular', 'SSR', 'Stripe'],
-    icon: 'bag',
-    glyph: '<Checkout oneTap />',
-    colors: ['#23B5F3', '#6C5CE7'],
-    featured: true,
+    summary: 'Estudio de tatuajes: portafolio con favoritos, servicios con carrito y reserva de citas por tatuador.',
+    tags: ['Angular', 'Spring Boot', 'SCSS'],
+    icon: 'palette',
+    glyph: 'reservar(tatuador, hora)',
+    colors: ['#C9A84C', '#6C5CE7'],
+    image: 'images/projects/doose.webp',
+    demoUrl: `${PAGES}/Doose/`,
+    repoUrl: `${GITHUB}/Doose`,
+  },
+  {
+    id: 'dasama',
+    name: 'Dasama Joyería',
+    category: 'web',
+    year: 2026,
+    summary: 'Sitio para una joyería de Medellín: colecciones, fichas de producto y compra directa por WhatsApp.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    icon: 'sparkles',
+    glyph: '<Oro18K />',
+    colors: ['#C9A84C', '#23B5F3'],
+    image: 'images/projects/joyeria.webp',
+    demoUrl: `${PAGES}/Damasa-Joyeria/`,
+    repoUrl: `${GITHUB}/Damasa-Joyeria`,
   },
   {
     id: 'kernel',
@@ -59,29 +116,6 @@ export const PROJECTS: readonly Project[] = [
     icon: 'shirt',
     glyph: 'sudo wear --cozy',
     colors: ['#6C5CE7', '#00E5FF'],
-    featured: true,
-  },
-  {
-    id: 'orbit',
-    name: 'Orbit CRM',
-    category: 'software',
-    year: 2025,
-    summary: 'CRM a medida que automatiza el seguimiento comercial y se integra con el ERP.',
-    tags: ['TypeScript', 'PostgreSQL', 'APIs'],
-    icon: 'layers',
-    glyph: 'await orbit.sync()',
-    colors: ['#5C32F2', '#23B5F3'],
-  },
-  {
-    id: 'pulse',
-    name: 'Pulse Health',
-    category: 'web',
-    year: 2025,
-    summary: 'PWA para reservas médicas: accesible, offline-first y con notificaciones.',
-    tags: ['PWA', 'Angular', 'A11y'],
-    icon: 'zap',
-    glyph: 'if (online) sync()',
-    colors: ['#00E5FF', '#23B5F3'],
   },
   {
     id: 'syntax',
@@ -93,27 +127,5 @@ export const PROJECTS: readonly Project[] = [
     icon: 'sticker',
     glyph: '{ ...stickers }',
     colors: ['#23B5F3', '#5C32F2'],
-  },
-  {
-    id: 'lumen',
-    name: 'Lumen Studio',
-    category: 'web',
-    year: 2024,
-    summary: 'Portafolio inmersivo para un estudio creativo, con transiciones cinematográficas.',
-    tags: ['Motion', 'WebGL', 'CMS'],
-    icon: 'sparkles',
-    glyph: 'animate(frame => ✦)',
-    colors: ['#6C5CE7', '#5C32F2'],
-  },
-  {
-    id: 'atlas',
-    name: 'Atlas API',
-    category: 'software',
-    year: 2024,
-    summary: 'API de logística que unifica proveedores de envío en una sola integración.',
-    tags: ['REST', 'Docker', 'Cloud'],
-    icon: 'cloud',
-    glyph: 'GET /v1/routes',
-    colors: ['#23B5F3', '#00E5FF'],
   },
 ];

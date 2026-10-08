@@ -1,10 +1,14 @@
 @let p = project();
 <article class="card glass spotlight" appTilt [tiltMax]="4">
   <div class="card__cover" [style.--c1]="p.colors[0]" [style.--c2]="p.colors[1]" aria-hidden="true">
-    <div class="card__window">
+    <div class="card__window" [class.card__window--shot]="p.image">
       <div class="card__dots"><i></i><i></i><i></i></div>
-      <code class="mono">{{ p.glyph }}</code>
-      <div class="card__lines"><i></i><i></i><i></i></div>
+      @if (p.image) {
+        <img class="card__shot" [src]="p.image" [alt]="'Captura de ' + p.name" loading="lazy" decoding="async" />
+      } @else {
+        <code class="mono">{{ p.glyph }}</code>
+        <div class="card__lines"><i></i><i></i><i></i></div>
+      }
     </div>
     <div class="card__badge icon-tile">
       <app-icon [name]="p.icon" [size]="24" />
@@ -23,5 +27,19 @@
         <li>{{ tag }}</li>
       }
     </ul>
+    @if (p.demoUrl || p.repoUrl) {
+      <div class="card__links">
+        @if (p.demoUrl) {
+          <a class="card__link card__link--primary" [href]="p.demoUrl" target="_blank" rel="noopener">
+            Ver demo <app-icon name="arrow-right" [size]="14" />
+          </a>
+        }
+        @if (p.repoUrl) {
+          <a class="card__link" [href]="p.repoUrl" target="_blank" rel="noopener">
+            <app-icon name="github" [size]="14" /> Código
+          </a>
+        }
+      </div>
+    }
   </div>
 </article>

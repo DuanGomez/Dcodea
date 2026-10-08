@@ -44,7 +44,7 @@ src/
 
 ## Pendiente de personalizar
 
-- `core/data/projects.data.ts`: los proyectos son ejemplos; sustitúyelos por casos reales.
+- `core/data/projects.data.ts`: proyectos del portafolio (captura en `public/images/projects`, demo y repositorio). Los de merch son conceptos.
 - `core/config/contact.config.ts`: la access key de Web3Forms. El formulario de contacto
   envía los mensajes a dcodea.correo@gmail.com a través de https://web3forms.com (gratis, 250/mes).
 
