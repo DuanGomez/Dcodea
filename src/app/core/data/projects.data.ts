@@ -57,7 +57,7 @@ export const PROJECTS: readonly Project[] = [
     tags: ['Angular', 'NestJS', 'TypeORM', 'Material'],
     icon: 'database',
     glyph: 'checkin("TX-0001")',
-    colors: ['#3D5AFE', '#00E5FF'],
+    colors: ['#FFC800', '#1A1A1A'],
     featured: true,
     image: 'images/projects/trainix.webp',
     demoUrl: `${PAGES}/Trainix/`,
