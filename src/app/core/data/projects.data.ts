@@ -34,6 +34,21 @@ const PAGES = 'https://duangomez.github.io';
 
 export const PROJECTS: readonly Project[] = [
   {
+    id: 'waia',
+    name: 'Waia',
+    category: 'software',
+    year: 2026,
+    summary: 'Asistente de atención por WhatsApp para negocios: responde preguntas, comparte precios del catálogo y registra clientes potenciales.',
+    tags: ['Angular', 'TypeScript', 'Signals', 'Motor de reglas'],
+    icon: 'sparkles',
+    glyph: 'waia.responder(mensaje)',
+    colors: ['#17B26A', '#131316'],
+    featured: true,
+    image: 'images/projects/waia.webp',
+    demoUrl: `${PAGES}/Waia/`,
+    repoUrl: `${GITHUB}/Waia`,
+  },
+  {
     id: 'smartkitchen',
     name: 'SmartKitchen',
     category: 'software',
