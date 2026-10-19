@@ -76,8 +76,9 @@
   inset: 12%;
   border-radius: 50%;
   background: conic-gradient(from 180deg, var(--c-cyan), var(--c-violet), var(--c-indigo), var(--c-sky), var(--c-cyan));
-  filter: blur(48px);
-  opacity: 0.45;
+  // Degradado radial en lugar de filter: blur — mismo halo sin coste de GPU por frame
+  mask-image: radial-gradient(closest-side, #000 0%, rgba(0, 0, 0, 0.45) 55%, transparent 100%);
+  opacity: 0.5;
 }
 
 .hero__plate {
@@ -86,8 +87,6 @@
   border-radius: 34%;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.03));
   border: 1px solid rgba(255, 255, 255, 0.18);
-  -webkit-backdrop-filter: blur(10px) saturate(160%);
-  backdrop-filter: blur(10px) saturate(160%);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.25) inset,
     0 -20px 40px -20px rgba(0, 229, 255, 0.25) inset,
@@ -109,7 +108,7 @@
   position: relative;
   width: 78%;
   height: auto;
-  filter: drop-shadow(0 24px 40px rgba(35, 181, 243, 0.35)) drop-shadow(0 8px 16px rgba(92, 50, 242, 0.35));
+  // La sombra viene integrada en isotipo-hero.webp: animar un drop-shadow lo recalcula cada frame
   animation: float 7s ease-in-out infinite;
 }
 

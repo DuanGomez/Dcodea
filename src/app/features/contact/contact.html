@@ -15,7 +15,7 @@
 
       <ul class="info" role="list">
         @for (item of info; track item.title; let i = $index) {
-          <li class="info__item" appReveal [revealDelay]="200 + i * 100">
+          <li class="info__item" appReveal [revealDelay]="120 + i * 70">
             <span class="info__icon"><app-icon [name]="item.icon" [size]="20" /></span>
             <div>
               <p class="info__title">{{ item.title }}</p>

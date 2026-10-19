@@ -1,4 +1,4 @@
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title" appPauseOffscreen>
   <div class="hero__bg" aria-hidden="true">
     <div class="orb orb--cyan"></div>
     <div class="orb orb--violet"></div>
@@ -12,7 +12,7 @@
         <div class="hero__plate" aria-hidden="true"></div>
         <img
           class="hero__logo"
-          src="images/isotipo.png"
+          src="images/isotipo-hero.webp"
           alt="Isotipo de Dcodea"
           width="720"
           height="720"
@@ -21,18 +21,18 @@
       </div>
     </div>
 
-    <p class="eyebrow hero__eyebrow enter" style="--enter-delay: 120ms">Dcodea · Código y diseño</p>
+    <p class="eyebrow hero__eyebrow enter" style="--enter-delay: 70ms">Dcodea · Código y diseño</p>
 
-    <h1 id="hero-title" class="display hero__title enter" style="--enter-delay: 220ms">
+    <h1 id="hero-title" class="display hero__title enter" style="--enter-delay: 140ms">
       Software que se siente
       <span class="text-gradient">bien hecho.</span>
     </h1>
 
-    <p class="lead hero__lead enter" style="--enter-delay: 340ms">
+    <p class="lead hero__lead enter" style="--enter-delay: 210ms">
       Diseñamos y desarrollamos webs, software a medida y merch para quienes construyen el futuro.
     </p>
 
-    <div class="hero__ctas enter" style="--enter-delay: 460ms">
+    <div class="hero__ctas enter" style="--enter-delay: 280ms">
       <a routerLink="/contacto" class="btn btn--primary btn--lg">Empezar un proyecto</a>
       <a routerLink="/portafolio" class="link-arrow">
         Ver proyectos <app-icon name="chevron-right" [size]="18" />

@@ -46,7 +46,7 @@
       </div>
 
       <div class="service__visual reveal--scale" appReveal [revealDelay]="150" aria-hidden="true">
-        <div class="visual glass" appTilt [tiltMax]="6">
+        <div class="visual glass" appTilt [tiltMax]="6" appPauseOffscreen>
           @switch (service.id) {
             @case ('web') {
               <div class="browser">

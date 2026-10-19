@@ -13,7 +13,7 @@ import { Icon } from '../icon/icon';
         <div class="cta__panel glass" appReveal>
           <div class="orb cta__orb cta__orb--a" aria-hidden="true"></div>
           <div class="orb cta__orb cta__orb--b" aria-hidden="true"></div>
-          <img class="cta__logo" src="images/isotipo.png" alt="" width="88" height="88" loading="lazy" />
+          <img class="cta__logo" src="images/isotipo-sm.webp" alt="" width="88" height="88" loading="lazy" />
           <h2 id="cta-title" class="headline">
             ¿Tienes una idea?<br />
             <span class="text-gradient">Hagámosla código.</span>

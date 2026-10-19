@@ -17,7 +17,7 @@
 
     <ul class="promises" role="list">
       @for (item of promises; track item.value; let i = $index) {
-        <li class="promise" appReveal [revealDelay]="i * 120">
+        <li class="promise" appReveal [revealDelay]="i * 70">
           <app-icon class="promise__icon" [name]="item.icon" [size]="28" />
           <strong class="promise__value">{{ item.value }}</strong>
           <p class="promise__label">{{ item.label }}</p>
@@ -37,7 +37,7 @@
 
     <div class="tiles">
       @for (service of services; track service.id; let i = $index) {
-        <div appReveal [revealDelay]="i * 120">
+        <div appReveal [revealDelay]="i * 70">
           <article class="tile glass spotlight" appTilt [tiltMax]="3">
             <div class="icon-tile tile__icon">
               <app-icon [name]="service.icon" [size]="26" />
@@ -90,7 +90,7 @@
 
     <ul class="work__grid" role="list">
       @for (project of featured; track project.id; let i = $index) {
-        <li appReveal [revealDelay]="i * 120">
+        <li appReveal [revealDelay]="i * 70">
           <app-project-card [project]="project" />
         </li>
       }

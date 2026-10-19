@@ -3,13 +3,14 @@ import { RouterLink } from '@angular/router';
 
 import { SERVICES } from '../../core/data/services.data';
 import { RevealDirective } from '../../shared/directives/reveal';
+import { PauseOffscreenDirective } from '../../shared/directives/pause-offscreen';
 import { TiltDirective } from '../../shared/directives/tilt';
 import { CtaBanner } from '../../shared/ui/cta-banner/cta-banner';
 import { Icon, IconName } from '../../shared/ui/icon/icon';
 
 @Component({
   selector: 'app-services',
-  imports: [RouterLink, Icon, CtaBanner, RevealDirective, TiltDirective],
+  imports: [RouterLink, Icon, CtaBanner, RevealDirective, TiltDirective, PauseOffscreenDirective],
   templateUrl: './services.html',
   styleUrl: './services.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
