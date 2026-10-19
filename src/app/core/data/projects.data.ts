@@ -34,6 +34,21 @@ const PAGES = 'https://duangomez.github.io';
 
 export const PROJECTS: readonly Project[] = [
   {
+    id: 'wms',
+    name: 'WMS',
+    category: 'software',
+    year: 2026,
+    summary: 'SaaS de monitoreo de flotas: vehículos en tiempo real sobre el mapa de Medellín, geocercas dibujadas a mano, alertas de robo o desvío y reportes PDF y Excel.',
+    tags: ['Angular', 'Azure Functions', 'Leaflet', 'SQLite'],
+    icon: 'pin',
+    glyph: 'gps.track(flota)',
+    colors: ['#2F6FED', '#131316'],
+    featured: true,
+    image: 'images/projects/wms.webp',
+    demoUrl: `${PAGES}/WMS/`,
+    repoUrl: `${GITHUB}/WMS`,
+  },
+  {
     id: 'waia',
     name: 'Waia',
     category: 'software',
