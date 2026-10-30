@@ -34,6 +34,21 @@ const PAGES = 'https://duangomez.github.io';
 
 export const PROJECTS: readonly Project[] = [
   {
+    id: 'brackit',
+    name: 'Brackit',
+    category: 'software',
+    year: 2026,
+    summary: 'SaaS de gestión de torneos para ligas y clubes: canchas con horarios, calendario automático sin choques, consola del árbitro y marcadores en vivo en la página pública.',
+    tags: ['React', 'Spring Boot', 'PostgreSQL', 'WebSocket'],
+    icon: 'shield',
+    glyph: 'torneo.programar(canchas)',
+    colors: ['#1F5BFF', '#18C46A'],
+    featured: true,
+    image: 'images/projects/brackit.webp',
+    demoUrl: 'https://brackit.dcodea-correo.workers.dev/',
+    repoUrl: `${GITHUB}/Brackit`,
+  },
+  {
     id: 'wms',
     name: 'WMS',
     category: 'software',
