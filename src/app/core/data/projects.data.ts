@@ -34,6 +34,21 @@ const PAGES = 'https://duangomez.github.io';
 
 export const PROJECTS: readonly Project[] = [
   {
+    id: 'beside',
+    name: 'Beside',
+    category: 'software',
+    year: 2026,
+    summary: 'App móvil para estar cerca de los tuyos: ubicación en tiempo real en un mapa nocturno, avisos al llegar a casa o cuando se les descarga el celular, historial de recorridos y la canción que suena en su Spotify.',
+    tags: ['Flutter', 'Supabase', 'MapLibre', 'PostgreSQL'],
+    icon: 'pin',
+    glyph: 'juntos(tú, ella)',
+    colors: ['#F2789A', '#A99BF5'],
+    featured: true,
+    image: 'images/projects/beside.webp',
+    demoUrl: 'https://duangomez.github.io/Beside/demo/',
+    repoUrl: `${GITHUB}/Beside`,
+  },
+  {
     id: 'brackit',
     name: 'Brackit',
     category: 'software',
