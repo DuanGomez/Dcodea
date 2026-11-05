@@ -34,6 +34,21 @@ const PAGES = 'https://duangomez.github.io';
 
 export const PROJECTS: readonly Project[] = [
   {
+    id: 'vellum',
+    name: 'Vellum',
+    category: 'software',
+    year: 2026,
+    summary: 'Agenda de citas para barberías, estéticas y consultorios: página de reservas propia, horarios por profesional, agenda del día y recordatorios por WhatsApp.',
+    tags: ['Angular', 'Laravel', 'PHP', 'PostgreSQL'],
+    icon: 'clock',
+    glyph: 'agenda.reservar(hora)',
+    colors: ['#B4532A', '#2C7A7B'],
+    featured: true,
+    image: 'images/projects/vellum.webp',
+    demoUrl: 'https://vellum-citas.pages.dev/',
+    repoUrl: `${GITHUB}/Vellum`,
+  },
+  {
     id: 'beside',
     name: 'Beside',
     category: 'software',
