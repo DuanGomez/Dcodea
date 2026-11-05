@@ -1,11 +1,7 @@
-// Configuración de despliegue en Cloudflare Workers (sitio estático).
+// Dcodea vive en Cloudflare Pages: https://dcodea.pages.dev
+// Este Worker (la dirección vieja dcodea.dcodea-correo.workers.dev) solo redirige allá.
 {
   "name": "dcodea",
   "compatibility_date": "2026-09-01",
-  "assets": {
-    // Salida de `npm run build`
-    "directory": "./dist/dcodea/browser",
-    // Rutas como /servicios o /contacto devuelven index.html y Angular se encarga
-    "not_found_handling": "single-page-application"
-  }
+  "main": "redirect.js"
 }
