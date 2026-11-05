@@ -34,6 +34,21 @@ const PAGES = 'https://duangomez.github.io';
 
 export const PROJECTS: readonly Project[] = [
   {
+    id: 'vexli',
+    name: 'Vexli',
+    category: 'software',
+    year: 2026,
+    summary: 'Inventario y caja diaria para tiendas: venta rápida con lector de código de barras, existencias con alertas, cierre de caja con arqueo y vitrina con pedidos por WhatsApp.',
+    tags: ['React', 'Python', 'FastAPI', 'PostgreSQL'],
+    icon: 'bag',
+    glyph: 'caja.cerrar(arqueo)',
+    colors: ['#16A34A', '#0B1220'],
+    featured: true,
+    image: 'images/projects/vexli.webp',
+    demoUrl: 'https://vexli-caja.pages.dev/',
+    repoUrl: `${GITHUB}/Vexli`,
+  },
+  {
     id: 'vellum',
     name: 'Vellum',
     category: 'software',
