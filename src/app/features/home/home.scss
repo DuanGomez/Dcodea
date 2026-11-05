@@ -149,8 +149,13 @@
 
 @media (max-width: 733px) {
   .promises,
-  .tiles,
-  .work__grid {
+  .tiles {
     grid-template-columns: 1fr;
+  }
+
+  // Una columna, pero sin tarjetas gigantes en pantallas medianas
+  .work__grid {
+    grid-template-columns: minmax(0, 520px);
+    justify-content: center;
   }
 }

@@ -190,11 +190,14 @@
   gap: 8px;
 }
 
+// La captura se muestra completa a lo ancho (16:10, como las portadas);
+// lo que sobra abajo lo oculta la portada, así nunca se cortan los lados.
 .card__shot {
   display: block;
   width: 100%;
-  flex: 1;
-  min-height: 0;
+  flex: none;
+  height: auto;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top center;
   border-radius: 8px 8px 0 0;

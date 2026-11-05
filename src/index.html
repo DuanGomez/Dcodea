@@ -15,6 +15,14 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Los servidores gratis de las demos se duermen sin visitas: se despiertan
+      // apenas alguien abre el portafolio, así la demo ya está lista al entrar.
+      ['https://vellum-citas-api.onrender.com/up', 'https://vexli-api.onrender.com/up', 'https://brackit-api-72pu.onrender.com/'].forEach(function (u) {
+        try { fetch(u, { mode: 'no-cors', cache: 'no-store' }).catch(function () {}); } catch (e) {}
+      });
+    </script>
+
   </head>
   <body>
     <app-root></app-root>

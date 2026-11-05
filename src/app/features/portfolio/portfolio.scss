@@ -72,8 +72,10 @@
 }
 
 @media (max-width: 733px) {
+  // Una columna, pero sin tarjetas gigantes en pantallas medianas
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 520px);
+    justify-content: center;
   }
 
   .segmented__option {
