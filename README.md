@@ -49,7 +49,7 @@ src/
   envía los mensajes a dcodea.correo@gmail.com a través de https://web3forms.com (gratis, 250/mes).
 
 Contacto y redes (en `features/contact/contact.ts` y `core/layout/footer/footer.ts`):
-dcodea.correo@gmail.com · WhatsApp +57 323 292 2041 · Instagram @dcod.ea · TikTok @dcodea_
+dcodea.correo@gmail.com · WhatsApp +57 323 468 6377 · Instagram @dcod.ea · TikTok @dcodea_
 
 Las imágenes originales están en `img/`; las versiones optimizadas para web (isotipo
 transparente, banner en WebP y favicon) están en `public/`.

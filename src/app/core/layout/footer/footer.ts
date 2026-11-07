@@ -43,6 +43,6 @@ export class Footer {
   protected readonly socials: readonly { label: string; icon: IconName; url: string }[] = [
     { label: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/dcod.ea/' },
     { label: 'TikTok', icon: 'tiktok', url: 'https://www.tiktok.com/@dcodea_' },
-    { label: 'WhatsApp', icon: 'whatsapp', url: 'https://wa.me/573232922041' },
+    { label: 'WhatsApp', icon: 'whatsapp', url: 'https://wa.me/573234686377' },
   ];
 }

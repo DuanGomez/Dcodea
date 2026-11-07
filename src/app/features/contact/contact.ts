@@ -48,7 +48,7 @@ export class Contact {
 
   protected readonly info: readonly { icon: IconName; title: string; text: string; href?: string }[] = [
     { icon: 'mail', title: 'Escríbenos', text: 'dcodea.correo@gmail.com', href: 'mailto:dcodea.correo@gmail.com' },
-    { icon: 'whatsapp', title: 'WhatsApp', text: '+57 323 292 2041', href: 'https://wa.me/573232922041' },
+    { icon: 'whatsapp', title: 'WhatsApp', text: '+57 323 468 6377', href: 'https://wa.me/573234686377' },
     { icon: 'clock', title: 'Respuesta', text: 'En menos de 24 horas hábiles' },
     { icon: 'pin', title: 'Dónde', text: 'Trabajamos en remoto, con clientes de todo el mundo' },
   ];
